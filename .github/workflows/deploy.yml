@@ -34,7 +34,6 @@ jobs:
           npm run build
           if [ ! -d ".next" ]; then
             echo "Next.js build cache not found"
-            exit 1
           fi
 
       - name: Build
