@@ -7,7 +7,7 @@ export const userData = {
   twitter: "https://x.com/008Ngo",
   stackOverflow: "https://stackoverflow.com/users/29859857/ngô-trí-anh",
   leetcode: "https://leetcode.com/u/AnhNgo1702/",
-  //resume: "",
+  resume: "google.com",
   skills: [
     ".NET",
     "React",

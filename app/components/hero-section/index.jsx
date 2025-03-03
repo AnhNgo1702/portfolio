@@ -98,7 +98,7 @@ function HeroSection({ profile }) {
               <SiLeetcode size={24} />
             </Link>
             <Link
-              href={userData.X}
+              href={userData.twitter}
               target="_blank"
               className="transition-all text-teal-500 hover:scale-125 duration-300"
             >
