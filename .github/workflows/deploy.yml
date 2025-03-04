@@ -39,7 +39,6 @@ jobs:
 
       - name: Build
         run: |
-          rm -rf out/
           touch out/.nojekyll
           echo "AnhNgo1702.github.io" > out/CNAME
 
