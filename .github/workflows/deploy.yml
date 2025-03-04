@@ -12,7 +12,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     env:
-      NEXT_PUBLIC_BASE_PATH: /AnhNgo1702.github.io
+      NEXT_PUBLIC_BASE_PATH: /anhngo1702.github.io
 
     steps:
       - name: Checkout
@@ -41,7 +41,7 @@ jobs:
         run: |
           npm run build
           touch out/.nojekyll
-          echo "AnhNgo1702.github.io" > out/CNAME
+          echo "anhngo1702.github.io" > out/CNAME
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
