@@ -7,7 +7,7 @@ import Rank from "./components/rank";
 import GitStats from "./components/stats";
 
 async function getGitProfile() {
-  const res = await fetch(`https://api.github.com/users/${userData.githubUser}`,{cache:"no-store"})
+  const res = await fetch(`https://api.github.com/users/${userData.githubUser}`,{cache:"reload"})
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
@@ -16,7 +16,7 @@ async function getGitProfile() {
 };
 
 async function getGitProjects() {
-  const res = await fetch(`https://api.github.com/search/repositories?q=user:${userData.githubUser}+fork:false&sort=stars&per_page=10&type=Repositories`,{cache:"no-store"})
+  const res = await fetch(`https://api.github.com/search/repositories?q=user:${userData.githubUser}+fork:false&sort=stars&per_page=10&type=Repositories`,{cache:"reload"})
 
   if (!res.ok) {
     throw new Error('Failed to fetch data')
