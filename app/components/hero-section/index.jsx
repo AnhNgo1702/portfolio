@@ -1,58 +1,16 @@
-"use client";
 // @flow strict
 
-import { userData } from "@/data/user-data";
+import { userData } from "../../../data/user-data";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { FaFacebook } from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
 import { MdDownload } from "react-icons/md";
 import { SiLeetcode } from "react-icons/si";
 
 function HeroSection({ profile }) {
-  const [text, setText] = useState("");
-  const [index, setIndex] = useState(0);
-  const fullText = "I'm web developer";
-
-  useEffect(() => {
-    const typingSpeed = 150;
-    const delayBetweenLoops = 1000;
-
-    if (index < fullText.length) {
-      const timeout = setTimeout(() => {
-        setText((prev) => prev + fullText[index]);
-        setIndex((prev) => prev + 1);
-      }, typingSpeed);
-      return () => clearTimeout(timeout);
-    } else {
-      const timeout = setTimeout(() => {
-        setText("");
-        setIndex(0);
-      }, delayBetweenLoops);
-      return () => clearTimeout(timeout);
-    }
-  }, [index, fullText]);
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
-      <div className="overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 py-4 lg:py-8">
-        <h1 className="text-white text-center md:text-left text-2xl lg:text-3xl xl:text-4xl font-semibold leading-relaxed">
-          Hello! 👋, I&apos;m{" "}
-          <span className="bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 text-transparent bg-clip-text">
-            {profile.name}
-          </span>
-        </h1>
-        <p className="text-gray-300 mt-2 text-center md:text-left">
-          Welcome to my portfolio site, where you can learn more about me.
-        </p>
-        <h2
-          className="mt-4 text-white text-center md:text-left text-xl lg:text-2xl font-medium leading-relaxed"
-          style={{ minHeight: "40px" }}
-        >
-          {text}
-        </h2>
-      </div>
       <div className="grid grid-cols-1 items-center md:grid-cols-2 lg:gap-12 gap-y-8">
         <div className="flex flex-col items-start justify-center rounded-lg p-3 lg:py-5 lg:px-12 bg-primary-bg h-full">
           <div className="flex w-full justify-center">
@@ -64,9 +22,16 @@ function HeroSection({ profile }) {
               className="rounded-full transition-all duration-1000 grayscale hover:grayscale-0 hover:scale-110 cursor-pointer"
             />
           </div>
-          <p className="text-gray-300 text-sm lg:text-base my-4 lg:my-6 text-center">
-            {profile.bio}
-          </p>
+          <div className="flex w-full justify-center">
+            <div className="text-center">
+              <p className="text-gray-300 text-sm lg:text-base my-4 lg:my-6 text-center block font-mono">
+                {profile.login}
+              </p>
+              <p className="text-gray-300 text-sm lg:text-base my-4 lg:my-6 text-center block font-mono">
+                {profile.bio}
+              </p>
+            </div>
+          </div>
 
           <div className="w-full flex justify-center items-center gap-5">
             <Link
@@ -83,13 +48,13 @@ function HeroSection({ profile }) {
             >
               <BsLinkedin size={24} />
             </Link>
-            <Link
+            {/* <Link
               href={userData.facebook}
-              target="_blank"
+              target='_blank'
               className="transition-all text-teal-500 hover:scale-125 duration-300"
             >
               <FaFacebook size={24} />
-            </Link>
+            </Link> */}
             <Link
               href={userData.leetcode}
               target="_blank"
@@ -97,13 +62,13 @@ function HeroSection({ profile }) {
             >
               <SiLeetcode size={24} />
             </Link>
-            <Link
+            {/* <Link
               href={userData.twitter}
-              target="_blank"
+              target='_blank'
               className="transition-all text-teal-500 hover:scale-125 duration-300"
             >
-              <FaSquareXTwitter size={24} />
-            </Link>
+              <FaTwitterSquare size={24} />
+            </Link> */}
           </div>
 
           <div className="w-full justify-center flex items-center gap-3 mt-6">
@@ -135,111 +100,86 @@ function HeroSection({ profile }) {
           <div className="overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 py-4 lg:py-8">
             <code className="font-mono text-xs md:text-sm lg:text-base">
               <div className="blink">
-                <span className="mr-2 text-blue-400">public class</span>
-                <span className="mr-2 text-violet-400">Developer</span>
-              </div>
-              <div>
+                <span className="mr-2 text-pink-400">const</span>
+                <span className="mr-2 text-violet-400">coder</span>
+                <span className="mr-2 text-pink-400">=</span>
                 <span className="text-gray-400">{"{"}</span>
               </div>
               <div>
-                <span className="ml-4 lg:ml-8 mr-2 text-blue-400">
-                  public string
-                </span>
-                <span className="text-white">Name</span>
-                <span className="mr-2 text-pink-400">=</span>
-                <span className="text-green-400">{`"${
-                  profile?.name || ""
-                }"`}</span>
-                <span className="text-gray-400">;</span>
+                <span className="ml-4 lg:ml-8 mr-2 text-white">name:</span>
+                <span className="text-gray-400">{`'`}</span>
+                <span className="text-green-400">{profile.name}</span>
+                <span className="text-gray-400">{`',`}</span>
               </div>
               <div>
-                <span className="ml-4 lg:ml-8 mr-2 text-blue-400">
-                  public string
-                </span>
-                <span className="text-white">Company</span>
-                <span className="mr-2 text-pink-400">=</span>
-                <span className="text-green-400">{`"${
-                  profile?.company || ""
-                }"`}</span>
-                <span className="text-gray-400">;</span>
+                <span className="ml-4 lg:ml-8 mr-2 text-white">company:</span>
+                <span className="text-gray-400">{`'`}</span>
+                <span className="text-green-400">{profile.company}</span>
+                <span className="text-gray-400">{`',`}</span>
               </div>
               <div>
-                <span className="ml-4 lg:ml-8 mr-2 text-blue-400">
-                  public string
-                </span>
-                <span className="text-white">Location</span>
-                <span className="mr-2 text-pink-400">=</span>
-                <span className="text-green-400">{`"${
-                  profile?.location || ""
-                }"`}</span>
-                <span className="text-gray-400">;</span>
+                <span className="ml-4 lg:ml-8 mr-2 text-white">location:</span>
+                <span className="text-gray-400">{`'`}</span>
+                <span className="text-green-400">{profile.location}</span>
+                <span className="text-gray-400">{`',`}</span>
               </div>
               <div>
-                <span className="ml-4 lg:ml-8 mr-2 text-blue-400">
-                  public int
-                </span>
-                <span className="text-white">Followers</span>
-                <span className="mr-2 text-pink-400">=</span>
-                <span className="text-orange-400">
-                  {profile?.followers || 0}
-                </span>
-                <span className="text-gray-400">;</span>
+                <span className="ml-4 lg:ml-8 mr-2 text-white">followers:</span>
+                <span className="text-orange-400">{profile.followers}</span>
+                <span className="text-gray-400">,</span>
               </div>
               <div>
-                <span className="ml-4 lg:ml-8 mr-2 text-blue-400">
-                  public int
-                </span>
-                <span className="text-white">Following</span>
-                <span className="mr-2 text-pink-400">=</span>
-                <span className="text-orange-400">
-                  {profile?.following || 0}
-                </span>
-                <span className="text-gray-400">;</span>
+                <span className="ml-4 lg:ml-8 mr-2 text-white">following:</span>
+                <span className="text-orange-400">{profile.following}</span>
+                <span className="text-gray-400">,</span>
               </div>
               <div>
-                <span className="ml-4 lg:ml-8 mr-2 text-blue-400">
-                  public int
+                <span className="ml-4 lg:ml-8 mr-2 text-white">
+                  repositories:
                 </span>
-                <span className="text-white">Repositories</span>
-                <span className="mr-2 text-pink-400">=</span>
-                <span className="text-orange-400">
-                  {profile?.public_repos || 0}
-                </span>
-                <span className="text-gray-400">;</span>
+                <span className="text-orange-400">{profile.public_repos}</span>
+                <span className="text-gray-400">,</span>
               </div>
-              <div>
-                <span className="ml-4 lg:ml-8 mr-2 text-blue-400">
-                  public string[]
-                </span>
-                <span className="text-white">Skills</span>
-                <span className="mr-2 text-pink-400">=</span>
-                <span className="text-blue-400">new</span>
-                <span className="text-white"> string[]</span>
-                <span className="text-gray-400">{" { "}</span>
-                {userData.skills.map((skill, i) => (
-                  <span key={i}>
-                    <span className="text-green-400">{`"${skill}"`}</span>
-                    {i !== userData.skills.length - 1 && (
-                      <span className="text-gray-400">{", "}</span>
+              <div className="ml-4 lg:ml-8 mr-2">
+                <span className=" text-white">languages: </span>
+                <span className="text-gray-400">{`['`}</span>
+                {userData.languages.map((language, i) => (
+                  <>
+                    <span key={i} className="text-cyan-400">
+                      {language}
+                    </span>
+                    {i !== userData.languages.length - 1 && (
+                      <span className="text-gray-400">{"', '"}</span>
                     )}
-                  </span>
+                  </>
                 ))}
-                <span className="text-gray-400">{" }"}</span>
-                <span className="text-gray-400">;</span>
+                <span className="text-gray-400">{"'],"}</span>
+              </div>
+              <div className="ml-4 lg:ml-8 mr-2">
+                <span className=" text-white">technologies: </span>
+                <span className="text-gray-400">{`['`}</span>
+                {userData.technologies.map((technology, i) => (
+                  <>
+                    <span key={i} className="text-cyan-400">
+                      {technology}
+                    </span>
+                    {i !== userData.technologies.length - 1 && (
+                      <span className="text-gray-400">{"', '"}</span>
+                    )}
+                  </>
+                ))}
+                <span className="text-gray-400">{"'],"}</span>
               </div>
               <div>
-                <span className="ml-4 lg:ml-8 mr-2 text-blue-400">
-                  public bool
-                </span>
-                <span className="text-white">IsHireable</span>
-                <span className="mr-2 text-pink-400">=</span>
+                <span className="ml-4 lg:ml-8 mr-2 text-white">hireable:</span>
                 <span className="text-orange-400">
-                  {String(profile?.hireable ?? false).toLowerCase()}
+                  {profile?.hireable?.toString()}
                 </span>
-                <span className="text-gray-400">;</span>
+                {/* <span className="text-orange-400">{'true'}</span> */}
+                <span className="text-gray-400">,</span>
               </div>
               <div>
-                <span className="text-gray-400">{"}"}</span>
+                <span className="text-gray-400">{`};`}</span>
               </div>
             </code>
           </div>

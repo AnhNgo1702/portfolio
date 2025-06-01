@@ -1,4 +1,4 @@
-import { colors } from "@/data/colors";
+import { colors } from "../../../data/colors";
 import Link from "next/link";
 import { FaRegStar } from "react-icons/fa";
 import { FaCodeFork } from "react-icons/fa6";
@@ -12,7 +12,7 @@ function ProjectCard({ project }) {
       <div className="p-8 h-48 flex flex-col justify-between bg-primary-bg">
         <div className="">
           <div className="flex justify-between items-center">
-            <p className="text-xl font-semibold capitalize text-primary-title">
+            <p className="text-xl font-semibold text-primary-title">
               {project.name}
             </p>
             <IoLinkSharp className="text-primary-icon text-xl" />
